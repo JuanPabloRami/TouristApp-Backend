@@ -1,0 +1,123 @@
+* {
+    color: #000;
+    font-family: Helvetica;
+}
+
+
+/*
+Login admin
+*/
+
+.login-logo img {
+    width: 200px;
+    border-radius: 100%;
+    margin-bottom: 50px;
+}
+
+.card-body {
+    background-color: white;
+    box-shadow: 0 0 10px #2caee6;
+}
+
+.login-box-msg {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.btn-outline-primary {
+    color: black;
+    border-color: black;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2caee6;
+    border-color: #2caee6;
+    color: white;
+}
+
+.btn-outline-primary:checked {
+    background-color: #2caee6;
+    border-color: #2caee6;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 10px #2caee6;
+}
+
+
+/*
+Nav Admin
+*/
+
+.main-header {
+    background-color: #2180a8;
+    color: #000;
+    font-weight: bold;
+}
+
+.main-sidebar {
+    background-color: #2180a8;
+    color: #000;
+    font-weight: bold;
+}
+
+.navbar {
+    border: none;
+}
+
+.nav-header li {
+    color: #fff;
+}
+
+.table a {
+    font-weight: bold;
+}
+
+.card-header h5 {
+    font-weight: bold;
+}
+
+.card-header h4 {
+    font-weight: bold;
+}
+
+.main-footer {
+    text-align: center;
+}
+
+#recent-actions-module {
+    visibility: hidden;
+}
+
+.form-group a {
+    border-color: rgb(223, 47, 47);
+    color: rgb(223, 47, 47);
+}
+
+.form-group a:hover {
+    background-color: rgb(223, 47, 47);
+    border-color: rgb(223, 47, 47);
+}
+
+.btn-block {
+    visibility: hidden;
+}
+
+.btn-group {
+    font-family: Helvetica;
+}
+
+.d-block {
+    font-size: 18px;
+}
+
+.brand-link span {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.dropdown-header {
+    font-size: 14px;
+    color: #000;
+}

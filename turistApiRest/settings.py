@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +45,93 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
 ]
+
+
+#jazzmin settings
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+        "site_title": "TouristApp Admin",
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+        "site_header": "TouristApp",
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+        "site_brand": "TouristApp",
+    # Logo to use for your site, must be present in static files, used for brand on top left
+        "site_logo": "images/logo.jpeg",
+    # Welcome text on the login screen
+    "welcome_sign": "Bienvenido Admin",
+    # CSS classes that are applied to the logo above
+    "site_logo_classes": "img-circle",
+    # Copyright on the footer
+    "copyright": "TouristApp S.A",
+    # The model admin to search from the search bar, search bar omitted if excluded
+    "search_model": "auth.User",
+
+        # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        #{"name": "Inicio",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        #{"name": "Soporte", "url": "https://github.com/JuanPabloRami/TouristApp-Backend", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "books"},
+    ],
+
+        # Additional links to include in the user menu on the top right ("app" url type is not allowed)
+    "usermenu_links": [
+        {"name": "Soporte", "url": "https://github.com/JuanPabloRami/TouristApp-Backend", "new_window": True},
+        {"model": "auth.user"}
+    ],
+
+    #############
+    # Side Menu #
+    #############
+
+    # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to aut expand the menu
+    "navigation_expanded": True,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": [],
+
+    # Hide these models when generating side menu (e.g auth.user)
+    "hide_models": [],
+
+    # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
+    #"order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+
+
+    # Icons that are used when one is not manually specified
+    "default_icon_parents": "fas fa-chevron-circle-right",
+    "default_icon_children": "fas fa-circle",
+
+    #################
+    # Related Modal #
+    #################
+    # Use modals instead of popups
+    "related_modal_active": True,
+
+    #############
+    # UI Tweaks #
+    #############
+    # Relative paths to custom CSS/JS scripts (must be present in static files)
+    "custom_css": "/css/style.css",
+    "custom_js": None,
+}
+
+#Theme UI
+JAZZMIN_UI_TWEAKS = {
+    "theme": "simplex",
+}
+
 
 AUTH_USER_MODEL= "users.User"
 
@@ -98,8 +187,8 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'touristapirest',
-    'USER': 'rami',
-    'PASSWORD': '1234',
+    'USER': 'root',
+    'PASSWORD': 'Sena1234',
     'HOST': 'localhost',
     'PORT': '3306',
     }
@@ -128,7 +217,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -146,3 +235,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# IMPORTANCION DE LA IMG
+STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]
