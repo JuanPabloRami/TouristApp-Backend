@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # la app 'users'
     'users',
+    'app',
     # rest framework apps!
     'rest_framework',
     'rest_framework.authtoken',
@@ -154,9 +155,9 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ),
-    "DEFAULT_PERMISSION_CLASSES":(
-        "rest_framework.permissions.IsAuthenticated"
-    )
+    # "DEFAULT_PERMISSION_CLASSES":(
+    #     "rest_framework.permissions.IsAuthenticated"
+    # )
 }
 
 
