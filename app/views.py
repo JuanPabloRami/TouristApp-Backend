@@ -4,7 +4,7 @@ from rest_framework import status, viewsets
 
 from .models import Tipo_Negocio,Negocio,Item
 from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer
-
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer
 class TipoViewSet(viewsets.ModelViewSet):
     queryset = Tipo_Negocio.objects.all()
     serializer_class= TipoSerializer
-    
+    permission_classes = [IsAuthenticated]
 
 class NegocioViewSet(viewsets.ModelViewSet):
     queryset = Negocio.objects.all()

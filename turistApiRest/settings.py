@@ -154,9 +154,10 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES":(
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-     'DEFAULT_PERMISSION_CLASSES':(
-         'rest_framework.permissions.IsAuthenticated',
+    'DEFAULT_PERMISSION_CLASSES':(
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
@@ -188,8 +189,8 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'touristapirest',
-    'USER': 'root',
-    'PASSWORD': 'Sena1234',
+    'USER': 'rami',
+    'PASSWORD': '1234',
     'HOST': 'localhost',
     'PORT': '3306',
     }

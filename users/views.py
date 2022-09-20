@@ -22,6 +22,7 @@ from .serializers import SignUpSerializer
 
 class signUpView(generics.GenericAPIView):
     serializer_class = SignUpSerializer
+    permission_classes = []
     
     def post(self,request:Request):
         data = request.data
@@ -39,7 +40,11 @@ class signUpView(generics.GenericAPIView):
         return Response(data = serializer.errors,status = status.HTTP_400_BAD_REQUEST)
 
 class LoginView(APIView):
+
+    permission_classes = []
     def post(self,request:Request):
+
+
         email = request.data.get('email')
         password = request.data.get('password')
         
