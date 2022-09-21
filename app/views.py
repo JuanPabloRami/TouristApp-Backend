@@ -17,15 +17,14 @@ class TipoViewSet(viewsets.ModelViewSet):
 class NegocioViewSet(viewsets.ModelViewSet):
     queryset = Negocio.objects.all()
     serializer_class= NegocioSerializer
-    
+    permission_classes = [IsAuthenticated]
 
 class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class= ItemSerializer
-    
+    permission_classes = [IsAuthenticated]
 
-def index(request):
-    return render(request, 'index.html')
+
 
 
 
