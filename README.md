@@ -1,1 +1,1 @@
-TENER EN CUENTA: instalar rest-framework
+TENER EN CUENTA: instalar los requirements.txt 
