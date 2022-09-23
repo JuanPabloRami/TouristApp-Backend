@@ -10,9 +10,11 @@ class TipoSerializer(serializers.ModelSerializer):
 class NegocioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Negocio
-        fields = '__all__'
+        exclude = ['dueno']
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = '__all__'
+
+

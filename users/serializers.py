@@ -41,3 +41,10 @@ class SignUpSerializer(serializers.ModelSerializer):
         
         return user
 
+
+class CurrentUserNegocioSerializer(serializers.ModelSerializer):
+    negocios = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model:User
+        fields=['id','username','email','negocios']
