@@ -1,0 +1,8 @@
+use touristapirest;
+
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Panaderia');
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Moda');
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Hospedaje');
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Miscelanea');
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Restaurantes');
+INSERT INTO app_tipo_negocio(nombre) VALUES ('Otros');

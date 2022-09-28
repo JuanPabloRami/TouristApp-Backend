@@ -197,8 +197,8 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
     'NAME': 'touristapirest',
-    'USER': 'rami',
-    'PASSWORD': '1234',
+    'USER': 'devgroup',
+    'PASSWORD': 'TouristApp1@',
     'HOST': 'localhost',
     'PORT': '3306',
     }
