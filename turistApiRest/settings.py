@@ -59,7 +59,7 @@ JAZZMIN_SETTINGS = {
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
         "site_brand": "TouristApp",
     # Logo to use for your site, must be present in static files, used for brand on top left
-        "site_logo": "images/logo.jpeg",
+        "site_logo": "images/logo5.png",
     # Welcome text on the login screen
     "welcome_sign": "Bienvenido Admin",
     # CSS classes that are applied to the logo above
