@@ -1,1 +1,2 @@
-TENER EN CUENTA: instalar los requirements.txt 
+#TENER EN CUENTA
+instalar los requirements.txt 
