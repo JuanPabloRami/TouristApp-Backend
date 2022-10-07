@@ -148,13 +148,25 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 
-CORS_ORIGIN_WHITLIST=(
-    'http://localhost:3000',
+CORS_ALLOWED_ORIGINS=(
+    "http://localhost:3000",
 )
 
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOWED_ORIGIN_REGEXES = [
+]
 
 ROOT_URLCONF = 'turistApiRest.urls'
 
