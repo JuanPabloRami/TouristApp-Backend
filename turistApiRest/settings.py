@@ -46,9 +46,15 @@ INSTALLED_APPS = [
     # rest framework apps!
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders'
+    'corsheaders',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
+SITE_ID = 1
 
 #jazzmin settings
 
@@ -273,3 +279,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # IMPORTANCION DE LA IMG
 STATICFILES_DIRS =[os.path.join(BASE_DIR, 'static')]
+
+# Authentication with google
+
+AUTHENTICATION_BACKENDS = [
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD:'email'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_EMAIL_VERIFICATION='mandatory'  
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =3
+ACCOUNT_CONFIRM_EMAIL_ON_GET= True
