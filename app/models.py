@@ -15,7 +15,7 @@ class Negocio(models.Model):
     nombre=models.CharField(max_length=50)
     descripcion=models.TextField()
     tipo_Negocio=models.ForeignKey(Tipo_Negocio,on_delete=models.PROTECT)
-    imagen = models.ImageField(upload_to="negocios",null=True)
+    imagen = models.ImageField(blank='', default = '',upload_to="negocios/")
     creado = models.DateTimeField(auto_now_add=True)
     ubicacion = models.TextField(null = True)
     dueno = models.ForeignKey(User, on_delete=models.CASCADE,related_name="negocios")
@@ -28,7 +28,7 @@ class Item(models.Model):
     descripcion=models.TextField()
     precio=models.IntegerField()
     nuevo=models.BooleanField()
-    imagen = models.ImageField(upload_to="negocios/items",null=True)
+    imagen = models.ImageField(blank='', default = '',upload_to="negocios/items/")
     creado = models.DateTimeField(auto_now_add=True)
     negocio=models.ForeignKey(Tipo_Negocio,on_delete=models.PROTECT)
 

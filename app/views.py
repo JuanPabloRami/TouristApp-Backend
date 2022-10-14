@@ -29,7 +29,6 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(dueno=user)
-
         return super().perform_create(serializer)
 
     
