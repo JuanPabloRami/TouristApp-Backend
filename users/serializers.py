@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.validators import ValidationError
 from rest_framework.authtoken.models import Token
 from .models import User
+from drf_extra_fields.fields import Base64ImageField 
 
 
 class SignUpSerializer(serializers.ModelSerializer):
@@ -11,10 +12,10 @@ class SignUpSerializer(serializers.ModelSerializer):
     email = serializers.CharField(max_length = 80)
     username= serializers.CharField(max_length = 45)
     password = serializers.CharField(min_length = 8,write_only=True)
-    
+    image = Base64ImageField(required = False)
     class Meta:
         model = User
-        fields= ['first_name','last_name','email','username','password']
+        fields= ['first_name','last_name','image','email','username','password']
         
     def validate(self, attrs):
         email_exists=User.objects.filter(email = attrs['email']).exists()

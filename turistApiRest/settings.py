@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-q5q1@^dfyanw!1czj!9jbabhs$^f=1a6@)fyw#1s-s)=8c@$l)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -160,7 +160,25 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS=(
     "http://localhost:3000",
+    "http://localhost:5173"
 )
+
+
+
+CSRF_TRUSTED_ORIGINS = ['https://touristapp-backend-production.up.railway.app']
+
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
 
 CORS_ALLOW_METHODS = [
     "DELETE",
@@ -189,7 +207,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME':timedelta(hours=2),
+    'ACCESS_TOKEN_LIFETIME':timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME':timedelta(days=1),
     'SIGNING_KEY': SECRET_KEY,
     'AUTH_HEADER_TYPES': ('Bearer',),

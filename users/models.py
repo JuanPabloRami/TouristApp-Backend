@@ -33,7 +33,7 @@ class User(AbstractUser):
   username = models.CharField(max_length=45)
   first_name = models.CharField(max_length=60)
   last_name = models.CharField(max_length=60)
-
+  image = models.ImageField(blank='', default = '',upload_to="users/")
   
   objects = CustomUserManager()
   USERNAME_FIELD = "email"

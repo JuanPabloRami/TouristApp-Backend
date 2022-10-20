@@ -10,10 +10,11 @@ class TipoSerializer(serializers.ModelSerializer):
 
 
 class NegocioSerializer(serializers.ModelSerializer):
-    imagen = Base64ImageField(required = False)
+    imgperfil = Base64ImageField(required = False)
+    imgportada = Base64ImageField(required = False)
     class Meta:
         model = Negocio
-        exclude = ['dueno']
+        exclude = ['dueno','likes']
 
 class ItemSerializer(serializers.ModelSerializer):
     imagen = Base64ImageField(required = False)
