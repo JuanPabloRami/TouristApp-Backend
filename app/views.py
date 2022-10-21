@@ -5,7 +5,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import APIView,api_view, permission_classes
 
-from TouristAppDockerizado.users.permissions import EsGrupoEmprendedor, EsGrupoTurista, EsIpPermitida
+from users.permissions import EsGrupoEmprendedor, EsGrupoTurista, EsIpPermitida
 
 from .models import Tipo_Negocio,Negocio,Item
 from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer
@@ -56,9 +56,6 @@ class NegocioRetrieveUpdateDeleteView(generics.GenericAPIView,mixins.RetrieveMod
     def delete(self,request:Request,*args,**kwargs):
         return self.destroy(request,*args,**kwargs)
 
-    if EsGrupoTurista | EsIpPermitida:
-        print("El usuario puede ver el negocio")
-        get()
 
 @api_view(http_method_names=['GET'])
 @permission_classes([IsAuthenticated])
