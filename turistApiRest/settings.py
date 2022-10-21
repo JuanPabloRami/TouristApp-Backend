@@ -243,8 +243,8 @@ DATABASES = {
     'NAME': 'touristapirest',
     'USER': 'devgroup',
     'PASSWORD': 'TouristApp1@' ,
-    'HOST': 'localhost',
-    'PORT': '3307',
+    'HOST': 'mysql',
+    'PORT': '3306',
     }
 }
 
