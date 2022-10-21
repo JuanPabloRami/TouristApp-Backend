@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser
@@ -34,10 +35,11 @@ class User(AbstractUser):
   first_name = models.CharField(max_length=60)
   last_name = models.CharField(max_length=60)
   image = models.ImageField(blank='', default = '',upload_to="users/")
+  type_user = models.CharField(max_length = 45,default='')
   
   objects = CustomUserManager()
   USERNAME_FIELD = "email"
-  REQUIRED_FIELDS = ["first_name","last_name","username"]
+  REQUIRED_FIELDS = ["first_name","last_name","username","type_user"]
   
   def __str__(self):
     return self.username

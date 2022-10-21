@@ -13,9 +13,10 @@ class SignUpSerializer(serializers.ModelSerializer):
     username= serializers.CharField(max_length = 45)
     password = serializers.CharField(min_length = 8,write_only=True)
     image = Base64ImageField(required = False)
+    type_user = serializers.CharField(required=True)
     class Meta:
         model = User
-        fields= ['first_name','last_name','image','email','username','password']
+        fields= ['first_name','last_name','image','email','username','password','type_user']
         
     def validate(self, attrs):
         email_exists=User.objects.filter(email = attrs['email']).exists()
