@@ -28,6 +28,8 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
     queryset=Negocio.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    
+
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(dueno=user)
@@ -64,6 +66,8 @@ def get_negocios_for_current_user(request:Request):
     serializer=CurrentUserNegocioSerializer(instance=user)
 
     return Response(data=serializer.data,status=status.HTTP_200_OK)
+
+
 
 class ListNegociosForAuthor(generics.GenericAPIView,mixins.ListModelMixin):
 

@@ -9,17 +9,21 @@ class TipoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class NegocioSerializer(serializers.ModelSerializer):
-    imgperfil = Base64ImageField(required = False)
-    imgportada = Base64ImageField(required = False)
-    class Meta:
-        model = Negocio
-        exclude = ['dueno','likes']
+
 
 class ItemSerializer(serializers.ModelSerializer):
     imagen = Base64ImageField(required = False)
     class Meta:
         model = Item
         fields = '__all__'
+
+class NegocioSerializer(serializers.ModelSerializer):
+    imgperfil = Base64ImageField(required = False)
+    imgportada = Base64ImageField(required = False)
+    
+    class Meta:
+        model = Negocio
+        # exclude = ['dueno','likes']
+        fields = ['nombre','descripcion','tipo_Negocio','imgperfil','imgportada','ubicacion','horaEntrada','horaSalida','contactFacebook','contactInstagram','contactWEB','contactEmail','creado']
 
 

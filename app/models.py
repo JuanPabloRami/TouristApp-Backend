@@ -38,7 +38,7 @@ class Item(models.Model):
     nuevo=models.BooleanField()
     imagen = models.ImageField(blank='', default = '',upload_to="negocios/items/")
     creado = models.DateTimeField(auto_now_add=True)
-    negocio=models.ForeignKey(Tipo_Negocio,on_delete=models.PROTECT)
+    negocio=models.ForeignKey(Negocio,on_delete=models.PROTECT)
 
     def __str__(self):
         return self.nombre

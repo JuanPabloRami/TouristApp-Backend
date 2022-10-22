@@ -2,6 +2,8 @@ from rest_framework import serializers
 from rest_framework.validators import ValidationError
 from rest_framework.authtoken.models import Token
 from .models import User
+
+from app.serializers import NegocioSerializer
 from drf_extra_fields.fields import Base64ImageField 
 
 
@@ -45,8 +47,8 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 
 class CurrentUserNegocioSerializer(serializers.ModelSerializer):
-    negocios = serializers.StringRelatedField(many=True)
+    negocios = NegocioSerializer(many = True)
 
     class Meta:
-        model:User
-        fields=['id','username','email','negocios']
+        model = User
+        fields=['first_name','last_name','image','email','username','type_user','negocios']
