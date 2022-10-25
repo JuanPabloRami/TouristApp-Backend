@@ -7,19 +7,39 @@ from rest_framework.decorators import APIView,api_view, permission_classes
 
 from users.permissions import EsGrupoEmprendedor, EsGrupoTurista, EsIpPermitida
 
-from .models import Tipo_Negocio,Negocio,Item
-from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer
+from .models import Tipo_Negocio,Negocio,Item,Comentario,Departamento,Ciudad
+from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer,ComentarioSerializer,DepartamentoSerializer,CiudadSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser,AllowAny
 from .permissions import ReadOnly, AuthorOrReadOnly
 from users.serializers import CurrentUserNegocioSerializer
 
 # Create your views here.
 
+class DepartamentoViewSet(viewsets.ModelViewSet):
+    queryset = Departamento.objects.all()
+    serializer_class= DepartamentoSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+class CiudadViewSet(viewsets.ModelViewSet):
+    queryset = Ciudad.objects.all()
+    serializer_class= CiudadSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class TipoViewSet(viewsets.ModelViewSet):
     queryset = Tipo_Negocio.objects.all()
     serializer_class= TipoSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+class ComentarioViewSet(viewsets.ModelViewSet):
+    queryset = Comentario.objects.all()
+    serializer_class= ComentarioSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(autor=user)
+        return super().perform_create(serializer)
+    
 
 
 
@@ -27,8 +47,6 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
     serializer_class= NegocioSerializer
     queryset=Negocio.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
-
-    
 
     def perform_create(self, serializer):
         user = self.request.user
