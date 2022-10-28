@@ -12,6 +12,9 @@ from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer,Comenta
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser,AllowAny
 from .permissions import ReadOnly, AuthorOrReadOnly
 from users.serializers import CurrentUserNegocioSerializer
+#filtrado
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 
@@ -24,6 +27,11 @@ class CiudadViewSet(viewsets.ModelViewSet):
     queryset = Ciudad.objects.all()
     serializer_class= CiudadSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'departamento__nombre':['contains']
+    }
 
 class TipoViewSet(viewsets.ModelViewSet):
     queryset = Tipo_Negocio.objects.all()
@@ -48,6 +56,15 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
     queryset=Negocio.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = {
+        'nombre':['contains'],
+        'ubicacion':['contains'],
+        'ciudad__nombre':['contains'],
+        'ciudad__departamento__nombre':['contains'],
+        'tipo_Negocio__nombre':['contains']
+    }
+
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(dueno=user)
@@ -64,10 +81,12 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
 
 class NegocioRetrieveUpdateDeleteView(generics.GenericAPIView,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin):
     serializer_class= NegocioSerializer
-    queryset=Negocio.objects.all()
-    permission_classes = [AuthorOrReadOnly, EsGrupoEmprendedor,EsGrupoTurista]
+    permission_classes = [AuthorOrReadOnly]
+
+
     
     def get(self,request:Request,*args,**kwargs):
+        
         return self.retrieve(request,*args,**kwargs)
 
     def put(self,request:Request,*args,**kwargs):

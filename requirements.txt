@@ -9,3 +9,5 @@ django-cors-headers
 django-allauth
 # para subir imagenes en base 64
 drf-extra-fields
+#filtros
+django-filter
