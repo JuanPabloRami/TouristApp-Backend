@@ -25,6 +25,7 @@ class TipoSerializer(serializers.ModelSerializer):
 
 class ItemSerializer(serializers.ModelSerializer):
     imagen = Base64ImageField(required = False)
+    imgpromocion = Base64ImageField(required = False)
     class Meta:
         model = Item
         fields = '__all__'
