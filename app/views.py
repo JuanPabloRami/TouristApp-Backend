@@ -106,6 +106,8 @@ def get_negocios_for_current_user(request:Request):
 
 
 
+
+
 class ListNegociosForAuthor(generics.GenericAPIView,mixins.ListModelMixin):
 
     queryset=Negocio.objects.all()
@@ -132,7 +134,8 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class= ItemSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
-    
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['negocio__id']
 
 
 

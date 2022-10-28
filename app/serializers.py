@@ -1,3 +1,5 @@
+from asyncore import read
+from tkinter import NE
 from rest_framework import serializers
 from .models import Tipo_Negocio,Negocio,Item,Comentario,Ciudad,Departamento
 from drf_extra_fields.fields import Base64ImageField 
@@ -33,6 +35,13 @@ class ComentarioSerializer(serializers.ModelSerializer):
         model = Comentario
         exclude = ['autor']
 
+class CurrentNegocioItemSerializer(serializers.ModelSerializer):
+    items = serializers.StringRelatedField(many = True)
+
+    class Meta:
+        model = Negocio
+        fields=['nombre','items']
+
 class NegocioSerializer(serializers.ModelSerializer):
     imgperfil = Base64ImageField(required = False)
     imgportada = Base64ImageField(required = False)
@@ -40,10 +49,13 @@ class NegocioSerializer(serializers.ModelSerializer):
     tipo_Negocio_id = serializers.PrimaryKeyRelatedField(queryset = Tipo_Negocio.objects.all(), source="tipo_Negocio")
     ciudad = CiudadSerializer(read_only=True)
     ciudad_id = serializers.PrimaryKeyRelatedField(queryset = Ciudad.objects.all(), source="ciudad")
+    # items = CurrentNegocioItemSerializer(instance=Negocio.objects.all())
     
     class Meta:
         model = Negocio
         # exclude = ['dueno','likes']
-        fields = ['nombre','descripcion','tipo_Negocio_id','tipo_Negocio','imgperfil','imgportada','ciudad_id','ciudad','ubicacion','horaEntrada','horaSalida','contactFacebook','contactInstagram','contactWEB','contactEmail','creado']
+        fields = ['id','nombre','descripcion','tipo_Negocio_id','tipo_Negocio','imgperfil','imgportada','ciudad_id','ciudad','ubicacion','horaEntrada','horaSalida','contactFacebook','contactInstagram','contactWEB','contactEmail','creado']
+
+
 
 

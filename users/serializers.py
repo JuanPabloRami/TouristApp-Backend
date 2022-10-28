@@ -3,7 +3,7 @@ from rest_framework.validators import ValidationError
 from rest_framework.authtoken.models import Token
 from .models import User
 
-from app.serializers import NegocioSerializer
+from app.serializers import NegocioSerializer,ItemSerializer
 from drf_extra_fields.fields import Base64ImageField 
 
 
