@@ -17,6 +17,8 @@ class Ciudad(models.Model):
 
 class Tipo_Negocio(models.Model):
     nombre = models.CharField(max_length=50)
+    descripcion = models.TextField()
+    imgCategoria = models.ImageField(blank='', default = '',upload_to="categorias/")
     def __str__(self):
         return self.nombre
         

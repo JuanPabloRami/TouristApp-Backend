@@ -1,5 +1,5 @@
 from asyncore import read
-from tkinter import NE
+#from tkinter import NE
 from rest_framework import serializers
 from .models import Tipo_Negocio,Negocio,Item,Comentario,Ciudad,Departamento
 from drf_extra_fields.fields import Base64ImageField 
@@ -17,7 +17,7 @@ class CiudadSerializer(serializers.ModelSerializer):
         fields = ['nombre','codigo','departamento_id','departamento']
 
 class TipoSerializer(serializers.ModelSerializer):
-    
+    imgCategoria = Base64ImageField(required = False)
     class Meta:
         model = Tipo_Negocio
         fields = '__all__'
