@@ -37,6 +37,9 @@ class TipoViewSet(viewsets.ModelViewSet):
     queryset = Tipo_Negocio.objects.all()
     serializer_class= TipoSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['nombre']
 
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
