@@ -1,10 +1,18 @@
+from ast import Expression
 from rest_framework import serializers
 from rest_framework.validators import ValidationError
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils.encoding import smart_str,force_str,smart_bytes,DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_decode,urlsafe_base64_encode
+from django.contrib.sites.shortcuts import  get_current_site
+from django.urls import reverse
+from .utils import Util
 from .models import User
 
 from app.serializers import NegocioSerializer,ItemSerializer
 from drf_extra_fields.fields import Base64ImageField 
+
 
 
 class SignUpSerializer(serializers.ModelSerializer):
@@ -52,3 +60,17 @@ class CurrentUserNegocioSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields=['first_name','last_name','image','email','username','type_user','negocios']
+
+
+class ResetPwEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField(min_length=2)
+
+    class Meta:
+        fields = ['email']
+
+    def validate(self,attrs):
+        
+        email = attrs['data'].get('email','')
+        
+
+        # return super().validate(attrs)

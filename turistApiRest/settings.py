@@ -244,8 +244,8 @@ DATABASES = {
     'NAME': 'touristapirest',
     'USER': 'devgroup',
     'PASSWORD': 'TouristApp1@' ,
-    'HOST': 'mysql',
-    'PORT': '3306',
+    'HOST': 'localhost',
+    'PORT': '3307',
     }
 }
 
@@ -288,6 +288,14 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/files/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+#ESTA COSA PARA ENVIAR CORREOS
+EMAIL_USE_TLS=True
+EMAIL_HOST='smtp@gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='touristappdev@gmail.com'
+EMAIL_HOST_PASSWORD='HoliBoliPoli'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
