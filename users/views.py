@@ -71,7 +71,7 @@ class LoginView(APIView):
         data = {
             "message":"Email o password invalido"
             }
-        return Response(data=data)
+        return Response(data=data,status=status.HTTP_400_BAD_REQUEST)
     
     
     def get(self,request:Request):

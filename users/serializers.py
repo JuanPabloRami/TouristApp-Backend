@@ -33,10 +33,10 @@ class SignUpSerializer(serializers.ModelSerializer):
         username_exists=User.objects.filter(username = attrs['username']).exists()
 
         if email_exists:
-            raise ValidationError("Error, Este correo ya esta en uso, intenta con otro.")
+            raise ValidationError("Este correo ya esta en uso")
 
         if username_exists:
-            raise ValidationError("Error, Este nombre de usuario ya esta en uso,intenta con otro")
+            raise ValidationError("Este nombre de usuario ya esta en uso")
         
         return super().validate(attrs)
     
