@@ -30,7 +30,9 @@ class CiudadViewSet(viewsets.ModelViewSet):
 
     filter_backends = [DjangoFilterBackend]
     filterset_fields = {
+        'nombre':['contains'],
         'departamento__nombre':['contains']
+        
     }
 
 class TipoViewSet(viewsets.ModelViewSet):

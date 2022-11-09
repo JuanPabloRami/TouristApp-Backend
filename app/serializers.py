@@ -14,7 +14,7 @@ class CiudadSerializer(serializers.ModelSerializer):
     departamento = DepartamentoSerializer(read_only=True)
     class Meta:
         model = Ciudad
-        fields = ['nombre','codigo','departamento_id','departamento']
+        fields = ['id','nombre','codigo','departamento_id','departamento']
 
 class TipoSerializer(serializers.ModelSerializer):
     imgCategoria = Base64ImageField(required = False)
