@@ -84,6 +84,7 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
 
 class NegocioRetrieveUpdateDeleteView(generics.GenericAPIView,mixins.RetrieveModelMixin,mixins.UpdateModelMixin,mixins.DestroyModelMixin):
     serializer_class= NegocioSerializer
+    queryset=Negocio.objects.all()
     permission_classes = [AuthorOrReadOnly]
 
 
