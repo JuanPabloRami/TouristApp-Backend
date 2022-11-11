@@ -47,6 +47,9 @@ class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class= ComentarioSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['negocio','autor']
+    
 
     def perform_create(self, serializer):
         user = self.request.user
