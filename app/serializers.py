@@ -31,10 +31,10 @@ class ItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ComentarioSerializer(serializers.ModelSerializer):
-    
+    autor = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Comentario
-        exclude = ['autor']
+        fields = ['id','comentario','creado','negocio','autor']
 
 class CurrentNegocioItemSerializer(serializers.ModelSerializer):
     items = serializers.StringRelatedField(many = True)

@@ -67,7 +67,8 @@ class NegocioListAndCreateView(generics.GenericAPIView,mixins.ListModelMixin,mix
         'ubicacion':['contains'],
         'ciudad__nombre':['contains'],
         'ciudad__departamento__nombre':['contains'],
-        'tipo_Negocio__nombre':['contains']
+        'tipo_Negocio__nombre':['contains'],
+        'id':['contains']
     }
 
     def perform_create(self, serializer):
