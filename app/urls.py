@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import TipoViewSet, ItemViewSet,NegocioListAndCreateView,NegocioRetrieveUpdateDeleteView,get_negocios_for_current_user,ComentarioViewSet,DepartamentoViewSet,CiudadViewSet
+from .views import TipoViewSet, ItemViewSet,NegocioListAndCreateView,NegocioRetrieveUpdateDeleteView,get_negocios_for_current_user,DepartamentoViewSet,CiudadViewSet
 from rest_framework import routers
 
 
@@ -9,7 +9,7 @@ router =routers.DefaultRouter()
 router.register('tipo-negocio',TipoViewSet)
 # router.register('negocio',NegocioViewSet)
 router.register('item',ItemViewSet)
-router.register('comentario',ComentarioViewSet)
+
 router.register('departamento',DepartamentoViewSet)
 router.register('ciudad',CiudadViewSet)
 

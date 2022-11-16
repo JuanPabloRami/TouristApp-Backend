@@ -8,7 +8,7 @@ from rest_framework.decorators import APIView,api_view, permission_classes
 from users.permissions import EsGrupoEmprendedor, EsGrupoTurista, EsIpPermitida
 
 from .models import Tipo_Negocio,Negocio,Item,Comentario,Departamento,Ciudad
-from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer,ComentarioSerializer,DepartamentoSerializer,CiudadSerializer
+from .serializers import TipoSerializer,NegocioSerializer,ItemSerializer,DepartamentoSerializer,CiudadSerializer
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, IsAdminUser,AllowAny
 from .permissions import ReadOnly, AuthorOrReadOnly
 from users.serializers import CurrentUserNegocioSerializer
@@ -43,19 +43,6 @@ class TipoViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['nombre']
 
-class ComentarioViewSet(viewsets.ModelViewSet):
-    queryset = Comentario.objects.all()
-    serializer_class= ComentarioSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['negocio','autor']
-    
-
-    def perform_create(self, serializer):
-        user = self.request.user
-        serializer.save(autor=user)
-        return super().perform_create(serializer)
-    
 
 
 

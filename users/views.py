@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate
 from rest_framework.request import Request
 from rest_framework.response import Response
-from rest_framework import generics, status
+from rest_framework import generics, status,viewsets
 from rest_framework.views import APIView
 from .tokens import create_jwt_pair_for_user
 from .models import User
+from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import SignUpSerializer,ResetPwEmailSerializer
+from .serializers import SignUpSerializer,ResetPwEmailSerializer,ViewUserSerializer
 # Create your views here.
 
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
@@ -18,6 +19,12 @@ from django.utils.http import urlsafe_base64_decode,urlsafe_base64_encode
 from django.contrib.sites.shortcuts import  get_current_site
 from django.urls import reverse
 from .utils import Util
+
+
+# xdxd
+from app.models import Comentario
+from .serializers import ComentarioSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 # @api_view(http_method_names=["GET","POST"])
 # def home(request:Request):
@@ -112,3 +119,29 @@ class RequestResetPwEmailView(generics.GenericAPIView):
 class PasswordTokenCheckView(generics.GenericAPIView):
     def get(self,request,uidb64,token):
         pass
+
+class PasswordTokenCheckView(generics.GenericAPIView):
+    def get(self,request,uidb64,token):
+        pass
+
+class ViewUsersView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class= ViewUserSerializer
+    permission_classes = []
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['id','username','type_user','email','negocios__id']
+
+class ComentarioViewSet(viewsets.ModelViewSet):
+    queryset = Comentario.objects.all()
+    serializer_class= ComentarioSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['negocio','autor']
+    
+    
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(autor=user)
+        return super().perform_create(serializer)
+    

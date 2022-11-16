@@ -3,6 +3,9 @@ from asyncore import read
 from rest_framework import serializers
 from .models import Tipo_Negocio,Negocio,Item,Comentario,Ciudad,Departamento
 from drf_extra_fields.fields import Base64ImageField 
+# from users.serializers import ViewUserSerializer
+
+# dxxd
 
 class DepartamentoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,11 +33,7 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'
 
-class ComentarioSerializer(serializers.ModelSerializer):
-    autor = serializers.PrimaryKeyRelatedField(read_only=True)
-    class Meta:
-        model = Comentario
-        fields = ['id','comentario','creado','negocio','autor']
+
 
 class CurrentNegocioItemSerializer(serializers.ModelSerializer):
     items = serializers.StringRelatedField(many = True)

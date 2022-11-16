@@ -9,6 +9,7 @@ from django.contrib.sites.shortcuts import  get_current_site
 from django.urls import reverse
 from .utils import Util
 from .models import User
+from app.models import Comentario
 
 from app.serializers import NegocioSerializer,ItemSerializer
 from drf_extra_fields.fields import Base64ImageField 
@@ -74,3 +75,23 @@ class ResetPwEmailSerializer(serializers.Serializer):
         
 
         # return super().validate(attrs)
+
+
+class ViewUserSerializer(serializers.ModelSerializer):
+    negocios = NegocioSerializer(many = True)
+
+    class Meta:
+        model = User
+        fields=['id','first_name','last_name','image','email','username','type_user','negocios']
+
+
+
+class ComentarioSerializer(serializers.ModelSerializer):
+    autorNombre = serializers.CharField(read_only=True,source="autor.first_name")
+    autorApellido = serializers.CharField(read_only=True,source="autor.last_name")
+    autorImg = serializers.CharField(read_only=True,source="autor.image")
+    autor = serializers.PrimaryKeyRelatedField(read_only=True)
+    
+    class Meta:
+        model = Comentario
+        fields = ['id','comentario','creado','negocio','autor','autorNombre','autorApellido','autorImg']
