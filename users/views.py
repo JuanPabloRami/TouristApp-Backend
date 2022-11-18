@@ -22,8 +22,8 @@ from .utils import Util
 
 
 # xdxd
-from app.models import Comentario
-from .serializers import ComentarioSerializer
+from app.models import Comentario, Like
+from .serializers import ComentarioSerializer, LikeSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 # @api_view(http_method_names=["GET","POST"])
@@ -134,6 +134,21 @@ class ViewUsersView(viewsets.ModelViewSet):
 class ComentarioViewSet(viewsets.ModelViewSet):
     queryset = Comentario.objects.all()
     serializer_class= ComentarioSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['negocio','autor']
+    
+    
+
+    def perform_create(self, serializer):
+        user = self.request.user
+        serializer.save(autor=user)
+        return super().perform_create(serializer)
+    
+
+class LikeViewSet(viewsets.ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class= LikeSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['negocio','autor']

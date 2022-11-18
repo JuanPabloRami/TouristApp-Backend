@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path,include
-from .views import ViewUsersView,ComentarioViewSet
+from .views import ViewUsersView,ComentarioViewSet,LikeViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -10,7 +10,7 @@ from rest_framework import routers
 router =routers.DefaultRouter()
 router.register('usersList',ViewUsersView)
 router.register('comentario',ComentarioViewSet)
-
+router.register('like',LikeViewSet)
 
 urlpatterns = [
     path('viewsets/',include(router.urls)),

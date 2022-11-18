@@ -9,7 +9,7 @@ from django.contrib.sites.shortcuts import  get_current_site
 from django.urls import reverse
 from .utils import Util
 from .models import User
-from app.models import Comentario
+from app.models import Comentario,Like
 
 from app.serializers import NegocioSerializer,ItemSerializer
 from drf_extra_fields.fields import Base64ImageField 
@@ -95,3 +95,14 @@ class ComentarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comentario
         fields = ['id','comentario','creado','negocio','autor','autorNombre','autorApellido','autorImg']
+
+
+class LikeSerializer(serializers.ModelSerializer):
+    autorNombre = serializers.CharField(read_only=True,source="autor.first_name")
+    autorApellido = serializers.CharField(read_only=True,source="autor.last_name")
+    autorImg = serializers.CharField(read_only=True,source="autor.image")
+    autor = serializers.PrimaryKeyRelatedField(read_only=True)
+    
+    class Meta:
+        model = Like
+        fields = ['id','negocio','autor','autorNombre','autorApellido','autorImg']

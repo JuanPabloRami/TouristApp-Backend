@@ -18,8 +18,7 @@ router.register('ciudad',CiudadViewSet)
 urlpatterns = [
     path('api/',include(router.urls)),
     path('api/negocio/',NegocioListAndCreateView.as_view(),name='negocio'),
-    # path('api/negocio/<int:pk>/',NegocioRetrieveUpdateDeleteView.as_view(),name='negocioDetalles'),
+    path('api/negocio/<int:pk>/',NegocioRetrieveUpdateDeleteView.as_view(),name='negocioDetalles'),
     path('api/misnegocios/',views.get_negocios_for_current_user,name='misnegocios'),
     path('api/negociosde/',views.ListNegociosForAuthor.as_view(),name='negocios_from_current_use'),
-    
 ]

@@ -64,5 +64,10 @@ class Comentario(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
 
 
+class Like(models.Model):
+    negocio=models.ForeignKey(Negocio,on_delete=models.PROTECT)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE,related_name="likes")
+
+
 
 
