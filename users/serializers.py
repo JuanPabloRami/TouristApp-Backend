@@ -60,7 +60,7 @@ class CurrentUserNegocioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields=['first_name','last_name','image','email','username','type_user','negocios']
+        fields=['id','first_name','last_name','image','email','username','type_user','negocios']
 
 
 class ResetPwEmailSerializer(serializers.Serializer):
