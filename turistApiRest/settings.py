@@ -241,11 +241,11 @@ WSGI_APPLICATION = 'turistApiRest.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'touristapirest',
-    'USER': 'devgroup',
-    'PASSWORD': 'TouristApp1@' ,
-    'HOST': 'mysql',
-    'PORT': '3306',
+    'NAME': 'railway',
+    'USER': 'root',
+    'PASSWORD': 'm4fsltxQ1RjaRapa3Sy7',
+    'HOST': 'containers-us-west-125.railway.app',
+    'PORT': '8046',
     }
 }
 
