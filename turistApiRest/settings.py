@@ -161,7 +161,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS=(
     "http://localhost:3000",
-    "https://touristapp-co.netlify.app"
+    "https://project-tourist-app.vercel.app/"
 )
 
 
