@@ -53,7 +53,7 @@ class Item(models.Model):
     creado = models.DateTimeField(auto_now_add=True)
     negocio=models.ForeignKey(Negocio,on_delete=models.PROTECT)
     imgpromocion = models.ImageField(blank='',default='',upload_to="negocios/items/promociones/")
-
+    
     def __str__(self):
         return self.nombre
 

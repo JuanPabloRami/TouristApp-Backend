@@ -29,6 +29,8 @@ class TipoSerializer(serializers.ModelSerializer):
 class ItemSerializer(serializers.ModelSerializer):
     imagen = Base64ImageField(required = False)
     imgpromocion = Base64ImageField(required = False)
+    negocionombre = serializers.CharField(read_only=True,source="negocio.nombre")
+    negocioimg = serializers.ImageField(read_only = True,source="negocio.imgperfil")
     class Meta:
         model = Item
         fields = '__all__'
