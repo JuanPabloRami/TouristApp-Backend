@@ -132,7 +132,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     serializer_class= ItemSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['negocio__id']
+    filterset_fields = ['negocio__id','nuevo']
 
 
 
